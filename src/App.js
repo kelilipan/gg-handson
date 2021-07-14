@@ -1,6 +1,6 @@
 import Image from "./components/image";
 import SearchBox from "./components/search-box";
-
+import images from "./data/images";
 function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,10 +13,7 @@ function App() {
       }}
     >
       <SearchBox handleSubmit={handleSubmit} />
-      <Image
-        title={"GIF animation"}
-        url={"https://media.giphy.com/media/Vh8pbGX3SGRwFDh3V0/source.gif"}
-      />
+      <Image title={images.title} url={images.url} />
     </div>
   );
 }

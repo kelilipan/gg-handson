@@ -1,5 +1,10 @@
 const Image = ({ title, url }) => {
-  return <img src={url} alt={title} />;
+  return (
+    <div>
+      <img src={url} alt={title} />
+      <h6>{title}</h6>
+    </div>
+  );
 };
 
 export default Image;
