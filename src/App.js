@@ -1,6 +1,7 @@
 import Image from "./components/image";
 import SearchBox from "./components/search-box";
 import images from "./data/images";
+import "./index.css";
 function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +14,15 @@ function App() {
       }}
     >
       <SearchBox handleSubmit={handleSubmit} />
-      <Image title={images.title} url={images.url} />
+      <div class="imageList">
+        {images.map((image) => {
+          return (
+            image.rating === "g" && (
+              <Image title={image.title} url={image.url} />
+            )
+          );
+        })}
+      </div>
     </div>
   );
 }
