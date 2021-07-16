@@ -1,6 +1,6 @@
 const Image = ({ title, url }) => {
   return (
-    <div>
+    <div style={{ padding: "1em" }}>
       <img src={url} alt={title} />
       <h6>{title}</h6>
     </div>
