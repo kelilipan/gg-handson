@@ -14,11 +14,11 @@ function App() {
       }}
     >
       <SearchBox handleSubmit={handleSubmit} />
-      <div class="imageList">
+      <div className="imageList">
         {images.map((image) => {
           return (
             image.rating === "g" && (
-              <Image title={image.title} url={image.url} />
+              <Image key={image.id} title={image.title} url={image.url} />
             )
           );
         })}
