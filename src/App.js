@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Image from "./components/image";
+import SearchBox from "./components/search-box";
+import images from "./data/images";
+import "./index.css";
 function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(e.target.query.value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Anvaqta Tangguh Wisesa</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
+      <SearchBox handleSubmit={handleSubmit} />
+      <div class="imageList">
+        {images.map((image) => {
+          return (
+            image.rating === "g" && (
+              <Image title={image.title} url={image.url} />
+            )
+          );
+        })}
+      </div>
     </div>
   );
 }
