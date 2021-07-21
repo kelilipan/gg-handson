@@ -1,9 +1,13 @@
 import Image from "../components/image";
 import SearchBox from "../components/search-box";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Index = () => {
   const [images, setImages] = useState([]);
-
+  useEffect(() => {
+    getSearchImage("mario").then((data) => {
+      setImages(data.data);
+    });
+  }, []);
   //function when form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +41,7 @@ const Index = () => {
               <Image
                 key={image.id}
                 title={image.title}
-                url={image.images.fixed_width.url}
+                url={image.images.fixed_height.url}
               />
             )
           );
