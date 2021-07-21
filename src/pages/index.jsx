@@ -13,7 +13,6 @@ const Index = () => {
     e.preventDefault();
     const query = e.target.query.value;
     getSearchImage(query).then((data) => {
-      console.log(data);
       //render response to state/DOM
       setImages(data.data);
     });
