@@ -8,6 +8,12 @@ const Index = () => {
       setImages(data.data);
     });
   }, []);
+
+  const [query, setQuery] = useState("");
+  const onSearchChange = (e) => {
+    setQuery(e.target.value);
+  };
+
   //function when form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +38,11 @@ const Index = () => {
         textAlign: "center",
       }}
     >
-      <SearchBox handleSubmit={handleSubmit} />
+      <SearchBox
+        handleSubmit={handleSubmit}
+        query={query}
+        handleChange={onSearchChange}
+      />
       <div className="imageList">
         {images.map((image) => {
           return (

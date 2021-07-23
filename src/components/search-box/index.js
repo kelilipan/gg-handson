@@ -1,16 +1,7 @@
-import { useState } from "react";
-
-const SearchBox = ({ handleSubmit }) => {
-  const [query, setQuery] = useState("");
+const SearchBox = ({ handleSubmit, handleChange, query }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name="query"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-        }}
-      />
+      <input name="query" value={query} onChange={handleChange} />
       <button type="submit">Search</button>
     </form>
   );
