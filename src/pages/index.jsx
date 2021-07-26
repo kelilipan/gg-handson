@@ -1,13 +1,18 @@
 import Image from "../components/image";
 import SearchBox from "../components/search-box";
 import { useEffect, useState } from "react";
+import { getSearchImage } from "../lib/giphy";
+import { useDispatch, useSelector } from "react-redux";
+import { storeImage } from "../redux/store/gifs";
 const Index = () => {
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
+  const images = useSelector((state) => state.gifs.images);
+  const dispatch = useDispatch();
   useEffect(() => {
     getSearchImage("mario").then((data) => {
-      setImages(data.data);
+      dispatch(storeImage(data.data));
     });
-  }, []);
+  }, [dispatch]);
 
   const [query, setQuery] = useState("");
   const onSearchChange = (e) => {
@@ -20,16 +25,8 @@ const Index = () => {
     const query = e.target.query.value;
     getSearchImage(query).then((data) => {
       //render response to state/DOM
-      setImages(data.data);
+      dispatch(storeImage(data.data));
     });
-  };
-
-  // function to get data from API
-  const getSearchImage = async (query) => {
-    const API_KEY = process.env.REACT_APP_GIPHY_KEY;
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${query}&limit=12`;
-    const response = await fetch(url).then((data) => data.json());
-    return response;
   };
 
   return (
