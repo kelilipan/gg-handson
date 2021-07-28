@@ -1,12 +1,17 @@
 // import images from "./data/images";
 import "./index.css";
-import Index from "./pages";
 import { store } from "./redux";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Routes from "./routes";
 function App() {
   return (
     <Provider store={store}>
-      <Index />
+      <Router>
+        <Navbar />
+        <Routes />
+      </Router>
     </Provider>
   );
 }

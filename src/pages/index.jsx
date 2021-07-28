@@ -35,6 +35,7 @@ const Index = () => {
         textAlign: "center",
       }}
     >
+      <h1>Search gif</h1>
       <SearchBox
         handleSubmit={handleSubmit}
         query={query}
