@@ -1,4 +1,4 @@
-import Image from "../components/image";
+import Image from "../components/GifCard";
 import { useEffect } from "react";
 import { getTrending } from "../lib/giphy";
 import { useDispatch, useSelector } from "react-redux";

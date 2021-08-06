@@ -1,9 +1,10 @@
-import Image from "../components/image";
+import Image from "../components/GifCard";
 import SearchBox from "../components/search-box";
 import { useEffect, useState } from "react";
 import { getSearchImage } from "../lib/giphy";
 import { useDispatch, useSelector } from "react-redux";
 import { storeImage } from "../redux/store/gifs";
+import Grid from "@material-ui/core/Grid";
 const Index = () => {
   // const [images, setImages] = useState([]);
   const images = useSelector((state) => state.gifs.images);
@@ -41,19 +42,21 @@ const Index = () => {
         query={query}
         handleChange={onSearchChange}
       />
-      <div className="imageList">
+      <Grid container spacing={2} style={{ padding: "1em" }}>
         {images.map((image) => {
           return (
             image.rating === "g" && (
-              <Image
-                key={image.id}
-                title={image.title}
-                url={image.images.fixed_height.url}
-              />
+              <Grid item md={3} sm={4} lg={2}>
+                <Image
+                  key={image.id}
+                  title={image.title}
+                  url={image.images.fixed_height.url}
+                />
+              </Grid>
             )
           );
         })}
-      </div>
+      </Grid>
     </div>
   );
 };
